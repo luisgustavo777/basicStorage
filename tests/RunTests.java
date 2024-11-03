@@ -16,12 +16,14 @@ public class RunTests {
             
             if (conn != null && !conn.isClosed()) {
                 System.out.println("database connection successfully established!");
+                
                 System.out.println("------------------");
                 testPartner();
                 System.out.println("------------------");
                 testEmployer();
                 System.out.println("------------------");
                 testProduct();
+                
                 conn.close();
             } else {
                 System.out.println("failed to connect to the database :c");
@@ -32,10 +34,10 @@ public class RunTests {
         }
     }
 
-    public static void testPartner() {
+    private static void testPartner() {
        
         //Creating a new partner
-        int partner_id = Partner.createPartner("Luis Gustavo", "Morro do Gama", "183.652.697-08", "55.735.142/0001-99", "contatoluisbp@gmail.com");
+        int partner_id = Partner.createPartner(Util.genRandomString(), Util.genRandomString(), Util.genRandomString(), Util.genRandomString(), Util.genRandomString());
          
         if (partner_id > 0) {
             System.out.println("partner successfully created!");
@@ -44,7 +46,7 @@ public class RunTests {
         }
         
         //Updating the partner
-        boolean successfullyUpdate = Partner.updatePartner(partner_id, "Jose", "Quimica", "382.570.570-61", "07.036.891/0001-85", "elenor6258@uorak.com");
+        boolean successfullyUpdate = Partner.updatePartner(partner_id, Util.genRandomString(), Util.genRandomString(), Util.genRandomString(), Util.genRandomString(), Util.genRandomString());
         
         if (successfullyUpdate) {
             System.out.println("partner successfully updated!");
@@ -71,10 +73,10 @@ public class RunTests {
         }
     }
 
-    public static void testEmployer() {
+    private static void testEmployer() {
        
         //Creating a new employer
-        String email = Employer.createEmployer("contatoluisbp@gmail.com", "030923");
+        String email = Employer.createEmployer(Util.genRandomString(), Util.genRandomString());
         
         if (email != null) {
             System.out.println("employer successfully created!");
@@ -83,7 +85,7 @@ public class RunTests {
         }
         
         //Updating the employer
-        boolean successfullyUpdate = Employer.updateEmployer("elenor6258", email);
+        boolean successfullyUpdate = Employer.updateEmployer(Util.genRandomString(), email);
         
         if (successfullyUpdate) {
             System.out.println("employer successfully updated!");
@@ -110,10 +112,10 @@ public class RunTests {
         }
     }
 
-    public static void testProduct() {
+    private static void testProduct() {
        
         //Creating a new product
-        int product_id = Product.createProduct("Garrafa de Agua", 15.5);
+        int product_id = Product.createProduct(Util.genRandomString(), Util.genRandomDouble());
 
         if (product_id > 0) {
             System.out.println("product successfully created!");
@@ -122,7 +124,7 @@ public class RunTests {
         }
         
         //Updating the product
-        boolean successfullyUpdate = Product.updateProduct(product_id, "garrafa de suco", 5.2);
+        boolean successfullyUpdate = Product.updateProduct(product_id, Util.genRandomString(), Util.genRandomDouble());
         
         if (successfullyUpdate) {
             System.out.println("product successfully updated!");

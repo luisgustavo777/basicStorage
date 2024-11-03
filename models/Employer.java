@@ -15,7 +15,7 @@ public class Employer {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
     
-            pstm.setString(1, email.trim().toLowerCase());
+            pstm.setString(1, email);
             pstm.setString(2, password);
             
             int affectedRows = pstm.executeUpdate(); 
@@ -58,7 +58,7 @@ public class Employer {
             PreparedStatement pstm = conn.prepareStatement(sql)) {
 
                 pstm.setString(1, password);
-                pstm.setString(2, email.trim().toLowerCase());
+                pstm.setString(2, email);
                 
                 int rowsAffected = pstm.executeUpdate();
 
