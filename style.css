@@ -79,3 +79,10 @@ html, body {
 .login-container button:hover {
     background-color: #0056b3;
 }
+
+.login .accountfunction {
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
+}
